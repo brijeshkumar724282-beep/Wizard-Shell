@@ -2,6 +2,8 @@
 #include<filesystem>
 #include<string>
 #include<sstream>
+#include<vector>
+#include <boost/algorithm/string.hpp>
 
 
 
@@ -22,19 +24,33 @@ void show(){
 
 void teleport(string path){
     current_path(path);
-    current_path();
 }
+
+
 
 
 
 //main
 int main(){
     string command;
-    cout<<"Wizard Terminal"<<endl;
+
+
+
+    cout<<"\033[32m"<<"Wizard Shell"<<endl;
     while(true){
         cout<<">> ";
         getline(cin, command);
-     
+
+
+        vector<string> cmds;
+        boost::split(cmds, command, boost::is_any_of("\t "), boost::token_compress_on);
+
+
+
+        // string s1, s2;
+        // stringstream ss( command );
+        // ss>>s1>>s2;
+        
         if(command == "help"){
             help();
         }
@@ -45,8 +61,9 @@ int main(){
         else if(command == "show"){
             show();
         }
-        else if(command=="teleport"){
+        else if(cmds[0]=="teleport"){
             
+            teleport(cmds[1]);
 
         }
         else {
