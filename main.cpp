@@ -4,6 +4,7 @@
 #include<sstream>
 #include<vector>
 #include <boost/algorithm/string.hpp>
+#include <cstdlib>
 
 
 
@@ -16,16 +17,30 @@ void help(){
     cout<<"help window \n";
     cout<<"help -- show help \n"
         <<"show -- show the current path \n"
-        <<"teleport -- teleport to another directory \n";
+        <<"teleport -- teleport to another directory \n"
+        <<"wipe -- wipe the whole screen"
+        <<"reborn -- rename a file";
 }
+
+void clear(){
+    system("clear");    
+
+}
+
 void show(){
     cout<<current_path();
 }
 
 void teleport(string path){
-    current_path(path);
+    filesystem::current_path(path);
 }
 
+void reborn(string fname, string newfname){
+
+    filesystem::rename(fname, newfname);
+    cout<<"reborned "<<endl;
+
+}
 
 
 
@@ -46,11 +61,9 @@ int main(){
         boost::split(cmds, command, boost::is_any_of("\t "), boost::token_compress_on);
 
 
-
         // string s1, s2;
         // stringstream ss( command );
         // ss>>s1>>s2;
-        
         if(command == "help"){
             help();
         }
@@ -65,6 +78,21 @@ int main(){
             
             teleport(cmds[1]);
 
+        }
+        else if(command == "wipe"){
+            clear();
+        }
+        else if(cmds[0] == "summon"){
+            if(create_directory(cmds[1])){
+                cout<<"magic done"<<endl;
+
+            }
+            else{
+                cout<<"summon already exist, no magic done";
+            };
+        }
+        else if(cmds[0] == "reborn"){
+            reborn(cmds[1], cmds[2]);
         }
         else {
             cout<<"type valid command";
