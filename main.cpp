@@ -37,8 +37,21 @@ void teleport(string path){
 
 void reborn(string fname, string newfname){
 
-    filesystem::rename(fname, newfname);
-    cout<<"reborned "<<endl;
+    // if(filesystem::rename(fname, newfname)){
+    //     cout<<"reborned..";
+    // }
+    // else{
+    //     cout<<"reborn declined...";
+    // };
+
+    try{
+        filesystem::rename(fname, newfname);
+        cout<<"reborned..!";
+    }
+    catch(const filesystem_error& e){
+        cout<<"reborn was declined...!";
+    };
+    
 
 }
 
