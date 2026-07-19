@@ -18,6 +18,15 @@ It currently supports commands such as:
 - reborn: rename a file or directory
 - bye: exit the shell
 
+## Releases
+
+Pre-built standalone executables are available for download:
+
+- **Windows**: `WizardTerminal-windows-x64.exe` - Standalone executable for Windows 64-bit systems
+- **Linux**: `WizardTerminal-linux-x86_64` - Standalone executable for Linux x86_64 systems
+
+Download the appropriate executable for your platform from the [Releases](https://github.com/brijeshkumar724282-beep/Wizard-Shell/releases) page and run it directly without needing to compile.
+
 ## Requirements
 
 You need:
