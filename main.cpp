@@ -11,24 +11,25 @@
 using namespace std;
 using namespace std::filesystem;
 
-
 void help(){
 
-    cout<<"help window \n";
+    cout<<"help window \n"<<endl;
     cout<<"help -- show help \n"
         <<"show -- show the current path \n"
         <<"teleport -- teleport to another directory \n"
         <<"wipe -- wipe the whole screen"
         <<"reborn -- rename a file";
+        
 }
 
 void clear(){
     system("clear");    
 
+    cout<<"\033[32m"<<"Wizard Shell"<<endl;
 }
 
 void show(){
-    cout<<current_path();
+    cout << current_path().filename().string();
 }
 
 void teleport(string path){
